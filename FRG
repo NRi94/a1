@@ -1,94 +1,67 @@
 {
-  "remarks": "\uD83D\uDCA6 3 - VLESS F - IPv4 : 443",
+  "remarks": "GermanyIPv4 (2) (IRCF Fragment)",
   "log": {
+    "access": "",
+    "error": "",
     "loglevel": "warning"
-  },
-  "dns": {
-    "hosts": {
-      "domain:googleapis.cn": [
-        "googleapis.com"
-      ]
-    },
-    "servers": [
-      "https://8.8.8.8/dns-query",
-      {
-        "address": "8.8.8.8",
-        "domains": [
-          "geosite:private",
-          "geosite:category-ir"
-        ],
-        "expectIPs": [
-          "geoip:private",
-          "geoip:ir"
-        ]
-      }
-    ],
-    "tag": "dns"
   },
   "inbounds": [
     {
+      "tag": "socks",
       "port": 10808,
-      "protocol": "socks",
-      "settings": {
-        "auth": "noauth",
-        "udp": true,
-        "userLevel": 8
-      },
-      "sniffing": {
-        "destOverride": [
-          "http",
-          "tls"
-        ],
-        "enabled": true,
-        "routeOnly": true
-      },
-      "tag": "socks-in"
-    },
-    {
-      "port": 10809,
-      "protocol": "http",
-      "settings": {
-        "auth": "noauth",
-        "udp": true,
-        "userLevel": 8
-      },
-      "sniffing": {
-        "destOverride": [
-          "http",
-          "tls"
-        ],
-        "enabled": true,
-        "routeOnly": true
-      },
-      "tag": "http-in"
-    },
-    {
       "listen": "127.0.0.1",
-      "port": 10853,
-      "protocol": "dokodemo-door",
-      "settings": {
-        "address": "1.1.1.1",
-        "network": "tcp,udp",
-        "port": 53
+      "protocol": "socks",
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ],
+        "routeOnly": false
       },
-      "tag": "dns-in"
+      "settings": {
+        "auth": "noauth",
+        "udp": true,
+        "allowTransparent": false
+      }
+    },
+    {
+      "tag": "http",
+      "port": 10809,
+      "listen": "127.0.0.1",
+      "protocol": "http",
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ],
+        "routeOnly": false
+      },
+      "settings": {
+        "auth": "noauth",
+        "udp": true,
+        "allowTransparent": false
+      }
     }
   ],
   "outbounds": [
     {
-      "protocol": "vless",
+      "tag": "proxy",
+      "protocol": "vmess",
       "settings": {
         "vnext": [
           {
-            "address": "crossout.net",
+            "address": "188.114.96.3",
             "port": 443,
             "users": [
               {
+                "id": "127a3cd9-6cb4-49d1-9258-91e1c257c6e3",
+                "alterId": 0,
+                "email": "t@t.tt",
+                "security": "auto",
                 "encryption": "none",
-                "flow": "",
-                "id": "788473f1-b42f-4cb2-9c4f-3827f983da52",
-                "level": 8,
-                "security": "auto"
+                "flow": ""
               }
             ]
           }
@@ -97,33 +70,35 @@
       "streamSettings": {
         "network": "ws",
         "security": "tls",
-        "sockopt": {
-          "dialerProxy": "fragment",
-          "tcpNoDelay": true
-        },
         "tlsSettings": {
           "allowInsecure": false,
-          "fingerprint": "randomized",
+          "serverName": "UpgRADe-dECiSIons-MaE-NAkED.TryclouDfLaRE.Com",
           "alpn": [
             "h2",
             "http/1.1"
           ],
-          "serverName": "upgrade-decisions-mae-naked.trycloudflare.com"
+          "fingerprint": "chrome",
+          "show": false
         },
         "wsSettings": {
+          "path": "788473f1-b42f-4cb2-9c4f-3827f983da52",
           "headers": {
-            "Host": "upgrade-decisions-mae-naked.trycloudflare.com",
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
-          },
-          "path": "788473f1-b42f-4cb2-9c4f-3827f983da52"
+            "Host": "UpgRADe-dECiSIons-MaE-NAkED.TryclouDfLaRE.Com"
+          }
+        },
+        "sockopt": {
+          "dialerProxy": "fragment",
+          "tcpKeepAliveIdle": 100,
+          "mark": 255,
+          "tcpNoDelay": true
         }
-      },
-      "tag": "proxy"
+      }
     },
     {
       "tag": "fragment",
       "protocol": "freedom",
       "settings": {
+        "domainStrategy": "AsIs",
         "fragment": {
           "packets": "1-1",
           "length": "10-20",
@@ -132,93 +107,43 @@
       },
       "streamSettings": {
         "sockopt": {
-          "tcpKeepAliveIdle": 100,
-          "tcpNoDelay": true
+          "tcpNoDelay": true,
+          "tcpKeepAliveIdle": 100
         }
       }
     },
     {
-      "protocol": "dns",
-      "tag": "dns-out"
-    },
-    {
+      "tag": "direct",
       "protocol": "freedom",
-      "settings": {
-        "domainStrategy": "UseIP"
-      },
-      "tag": "direct"
+      "settings": {}
     },
     {
+      "tag": "block",
       "protocol": "blackhole",
       "settings": {
         "response": {
           "type": "http"
         }
-      },
-      "tag": "block"
+      }
     }
   ],
-  "policy": {
-    "levels": {
-      "8": {
-        "connIdle": 300,
-        "downlinkOnly": 1,
-        "handshake": 4,
-        "uplinkOnly": 1
-      }
-    },
-    "system": {
-      "statsOutboundUplink": true,
-      "statsOutboundDownlink": true
-    }
-  },
   "routing": {
-    "domainStrategy": "IPIfNonMatch",
+    "domainStrategy": "AsIs",
     "rules": [
       {
+        "type": "field",
         "inboundTag": [
-          "dns-in"
+          "api"
         ],
-        "outboundTag": "dns-out",
-        "type": "field"
+        "outboundTag": "api",
+        "enabled": true
       },
       {
-        "inboundTag": [
-          "socks-in",
-          "http-in"
-        ],
-        "port": "53",
-        "outboundTag": "dns-out",
-        "type": "field"
-      },
-      {
-        "ip": [
-          "8.8.8.8"
-        ],
-        "port": "53",
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "domain": [
-          "geosite:private",
-          "geosite:category-ir"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "ip": [
-          "geoip:private",
-          "geoip:ir"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "network": "tcp",
+        "id": "5627785659655799759",
+        "type": "field",
+        "port": "0-65535",
         "outboundTag": "proxy",
-        "type": "field"
+        "enabled": true
       }
     ]
   }
