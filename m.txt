@@ -1,1 +1,3 @@
 vless://c54f5d16-78b0-478c-ab2e-0d5c4dc1d097@visa.com:443?encryption=none&security=tls&sni=lucky-mud-e2025.yisarol430.workers.dev&alpn=h2%2Chttp%2F1.1&fp=randomized&type=ws&host=lucky-mud-e2025.yisarol430.workers.dev&path=%2F%3Fed%3D2560#M1
+vless://c54f5d16-78b0-478c-ab2e-0d5c4dc1d097@www.speedtest.net:443?encryption=none&security=tls&sni=lucky-mud-e2025.yisarol430.workers.dev&alpn=h2%2Chttp%2F1.1&fp=randomized&type=ws&host=lucky-mud-e2025.yisarol430.workers.dev&path=%2F%3Fed%3D2560#M1
+vless://c54f5d16-78b0-478c-ab2e-0d5c4dc1d097@kate.ns.cloudflare.com:443?encryption=none&security=tls&sni=lucky-mud-e2025.yisarol430.workers.dev&alpn=h2%2Chttp%2F1.1&fp=randomized&type=ws&host=lucky-mud-e2025.yisarol430.workers.dev&path=%2F%3Fed%3D2560#M1
