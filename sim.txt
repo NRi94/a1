@@ -10,4 +10,5 @@ vless://42e8bb76-506c-4833-b043-09f8b38cee01@188.114.96.168:2086?encryption=none
 vless://42e8bb76-506c-4833-b043-09f8b38cee01@104.16.56.205:8880?encryption=none&security=none&type=ws&host=plain-shape-4a7d.ali-narimani1140.workers.dev&path=%2F%3Fed%3D2560%26proxyip%3Dproxyip.cmliussss.net%3A443#CF%E9%9A%8F%E6%9C%BA%E8%8A%82%E7%82%B902
 vless://42e8bb76-506c-4833-b043-09f8b38cee01@104.16.57.112:2095?encryption=none&security=none&type=ws&host=plain-shape-4a7d.ali-narimani1140.workers.dev&path=%2F%3Fed%3D2560%26proxyip%3Dproxyip.cmliussss.net%3A443#CF%E9%9A%8F%E6%9C%BA%E8%8A%82%E7%82%B915
 vless://42e8bb76-506c-4833-b043-09f8b38cee01@104.24.189.154:8880?encryption=none&security=none&type=ws&host=plain-shape-4a7d.ali-narimani1140.workers.dev&path=%2F%3Fed%3D2560%26proxyip%3Dproxyip.cmliussss.net%3A443#CF%E9%9A%8F%E6%9C%BA%E8%8A%82%E7%82%B903
-vless://da3c4b18-2deb-4042-835e-97cffae7f66f@109.120.157.128:32732?encryption=none&security=none&type=xhttp&path=%2F&mode=auto#kuarontr
+vless://da3c4b18-2deb-4042-835e-97cffae7f66f@109.120.157.128:32732?encryption=none&security=none&type=xhttp&path=%2F&mode=auto#XHTP
+vless://a4ca3c6f-da10-4bd6-b82c-545a718fb0bb@109.120.157.128:2053?encryption=none&security=none&type=tcp&headerType=none#Psiphon
